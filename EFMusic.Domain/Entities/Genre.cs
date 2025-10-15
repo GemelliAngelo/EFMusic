@@ -1,10 +1,11 @@
 ﻿namespace EFMusic.Domain.Entities
 {
-    public class Producer
+    public class Genre
     {
         public int Id { get; set; }
         public required string Name { get; set; }
+        public string? Description { get; set; }
 
-        public ICollection<SongDetails> SongsDetails { get; set; } = [];
+        public ICollection<Song>? Songs { get; set; } = [];
     }
 }

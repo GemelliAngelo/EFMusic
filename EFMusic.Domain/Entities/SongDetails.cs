@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EFMusic.Domain.Entities
 {
     public class SongDetails
     {
-        [Key]
         public int SongId { get; set; }
+        public Song? Song { get; set; }
+
         public required DateTime ReleaseDate { get; set; }
         public short Length { get; set; }
 

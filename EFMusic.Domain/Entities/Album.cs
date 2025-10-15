@@ -13,6 +13,7 @@ namespace EFMusic.Domain.Entities
         public required DateTime ReleaseDate { get; set; }
 
         public ICollection<Song> Songs { get; set; } = [];
+
         public ICollection<Artist> Artists { get; set; } = [];
     }
 }
