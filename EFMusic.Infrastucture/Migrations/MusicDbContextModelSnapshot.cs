@@ -284,8 +284,9 @@ namespace EFMusic.Infrastucture.Migrations
                     b.Property<int?>("AlbumId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Title")
-                        .HasColumnType("int");
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

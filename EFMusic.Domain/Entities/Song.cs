@@ -2,8 +2,8 @@
 {
     public class Song
     {
-        public required int Id { get; set; }
-        public required int Title { get; set; }
+        public int Id { get; set; }
+        public required string Title { get; set; }
 
         public SongDetails? SongDetails { get; set; }
 

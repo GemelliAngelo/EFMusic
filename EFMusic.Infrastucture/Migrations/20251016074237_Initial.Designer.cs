@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFMusic.Infrastucture.Migrations
 {
     [DbContext(typeof(MusicDbContext))]
-    [Migration("20251015151153_Initial")]
+    [Migration("20251016074237_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -287,8 +287,9 @@ namespace EFMusic.Infrastucture.Migrations
                     b.Property<int?>("AlbumId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Title")
-                        .HasColumnType("int");
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

@@ -1,4 +1,5 @@
-﻿using EFMusic.Infrastucture;
+﻿using EFMusic.Domain.Entities;
+using EFMusic.Infrastucture;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using System.Reflection;
@@ -48,8 +49,31 @@ namespace EFMusic.App
                             Console.WriteLine(JsonSerializer.Serialize(songs,_options));
                             break;
                         case 2:
+                            Console.WriteLine("Title, Artist or Genre: ");
+                            var inputSearch = Console.ReadLine();
+                            var searchSongs = context.Songs.Where(s => s.Title == inputSearch || s.Genres.Contains(new Genre() { Name = inputSearch }) || s.Artists.Contains(new Artist() { Name = inputSearch }))
+                                .Include(s => s.SongDetails)
+                                .Include(s => s.Artists)
+                                .Include(s => s.Album)
+                                .Include(s => s.Genres);
+
+                            Console.WriteLine(JsonSerializer.Serialize(searchSongs,_options));
                             break;
                         case 3:
+                            Console.Write("Title: ");
+                            var inputTitle = Console.ReadLine();
+                            Console.Write("Artist: ");
+                            var inputArtist = Console.ReadLine();
+                            Console.Write("Genres: ");
+                            var inputGenres = Console.ReadLine();
+                            Console.Write("Length: ");
+                            var inputLength = Console.ReadLine();
+                            Console.Write("Producer: ");
+                            var inputProducer = Console.ReadLine();
+                            Console.Write("Release Date: ");
+                            var inputReleaseDate = Console.ReadLine();
+                            Console.Write("Album: ");
+                            var inputAlbum = Console.ReadLine();
                             break;
                         case 4:
                             return;
