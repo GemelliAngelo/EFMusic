@@ -1,6 +1,7 @@
 ﻿using EFMusic.Domain.Entities;
 using EFMusic.Infrastucture;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.Reflection;
 using System.Text.Json;
@@ -61,7 +62,7 @@ namespace EFMusic.App
                             break;
                         case 3:
                             Console.Write("Title: ");
-                            var inputTitle = Console.ReadLine();
+                            var inputTitle = Console.ReadLine() ?? "";
 
                             Console.WriteLine("How many Artists: ");
                             var inputArtistsCount = Convert.ToInt16(Console.ReadLine());
@@ -98,7 +99,7 @@ namespace EFMusic.App
                             Console.Write("Length: ");
                             var inputLength = Convert.ToInt16(Console.ReadLine());
 
-                            Console.Write("Available Producers: ");
+                            Console.WriteLine("Available Producers: ");
                             foreach (var producer in producers)
                             {
                                 Console.WriteLine($"[{producer.Id}] {producer.Name}");
